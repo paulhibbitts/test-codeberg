@@ -1,32 +1,154 @@
-[![Docsify](https://img.shields.io/npm/v/docsify?label=docsify)](https://docsify.js.org/)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/hibbitts-design/docsify-open-multicourse-starter-kit/blob/main/LICENSE)
-<a href="https://discord.gg/zT8eS8ZG">
-    <img src="https://img.shields.io/badge/chat-on%20discord-7289DA.svg" alt="Docsify Discord Chat" />
-</a>
+<div id="docsifythis">
 
-## Publish Online Markdown Files as Web Pages in Seconds
+<div class="docsifythisimagebanner">
+  <img class="background-image" src="images/milad-fakurian-CN2FEPXERRI-unsplash.jpg"  alt="3D Render by Milad Fakurian on Unsplash">
+  <div class="overlay">
+    <h1><b>Docsify-This</b></h1>
+  </div>
+</div>
 
-The open-source web app [Docsify-This](https://docsify-this.net), built with the magical documentation site generator [Docsify](https://docsify.js.org), provides a quick way to display one or more online Markdown files as standalone web pages without needing to setup your own website. All you need is a publicly available Markdown file and pass that URL to docsify-this.net.
+# Publish Online Markdown Files as Web Pages in Seconds
 
-![ Docsify-This](https://raw.githubusercontent.com/paulhibbitts/github-repo-images/master/docsify-this-web-page-builder.png)
-_Figure 1. [Docsify-This.net](https://docsify-this.net) Web Page Builder._
+The open-source web app [Docsify-This](https://docsify-this.net), built with the magical documentation site generator [Docsify](https://docsify.js.org), provides a quick way to display one or more online Markdown files as standalone web pages without needing to setup your own website. All you need is a publicly available Markdown file and pass that URL to docsify-this.net. Try it out below!
+
+<div id="docsifythisurlbuilder">
+
+## Web Page Builder
+
+Enter the URL of a Markdown file below and view that file as a web page in a new Browser tab. The resulting Docsify-This page URL can be copied and shared or used as an iFrame source URL.
+
+**Markdown File URL** (GitHub or raw source URL):</br>
+<input name="markdownFileURL" aria-label="markdown file url" id="docsifythisurlfield" type="url" onfocus="this.select()" onclick="this.select()" onkeypress="checkKey(event);" size="200px" value="https://github.com/hibbitts-design/docsify-this-one-page-article/blob/main/home.md" />
+<input class="docsifythisurlbuilderprimarybutton" style="border:none;" type="button" id="btn_1" value="View as Standalone Web Page" onclick="openURLs(document.getElementById('docsifythisurlfield').value)"/></br>
+
+Page layout:
+
+<div style="display: flex; margin-top: -3px;">
+
+<label>
+  <input type="radio" name="pagestyle" id="stylecontentonly" checked>
+  <img style="padding: 2px;" src="images/contentonly.png" alt="Page Content Only" title="Page Content Only" >
+  <figcaption id="caption">Content Only</figcaption>
+</label>
+
+<label>
+  <input type="radio" name="pagestyle" id="styletoc">
+  <img style="padding: 2px;" src="images/toc.png" alt="Page with Table of Contents" title="Page with Table of Contents">
+  <figcaption id="caption">Table of Contents</figcaption>
+</label>
+
+<label>
+  <input type="radio" name="pagestyle" id="stylesidebar" >
+  <img style="padding: 2px;" src="images/sidebar.png" alt="Page with Docsify Sidebar (collapsible)" title="Page with Docsify Sidebar (collapsible)">
+  <figcaption id="caption">Docsify Sidebar</figcaption>
+</label>
+
+</div>
+
+<div class="docsifythisurlbuilderoptionsline"><input class="docsifythisurlbuildercheckbox" type="checkbox" id="editCheck" unchecked><label for="editCheck">Include 'Edit this Page' link with public GitHub files (default location is bottom of page)</label></div>
+
+<div id="docsifythisurlbuildershowhidelink"><a name="toggleDivlink" href="#" onclick="toggleDiv(this); return false;">Show More Page Options &raquo;</a></div>
+
+<div id="docsifythisurlbuilderoptionsDiv" style='display: none'>
+
+<hr>
+
+<div class="docsifythisurlbuilderoptionsline">
+
+<div class="docsifythisurlbuilderoptionsline"><label>Page title on Browser tab:</label><br><input type="text" maxlength="60" value="Published by Docsify-This" id="pageTitle" name="pageTitle""></div>
+
+  <div class='stackedlabeldropdown'>
+      <label for="select1">Page font family:</label>
+      <select class="docsifythisurlbuilderoptionsline" id="fontfamily" name="fontfamily">
+        <option value="default">Source Sans Pro</option>
+        <option disabled="disabled">----</option>
+        <option value="Arial,sans-serif">Arial, sans-serif</option>
+        <option value="Helvetica,sans-serif">Helvetica, sans-serif</option>
+        <option value="Helvetica%20Neue,Helvetica,Arial,sans-serif">Helvetica Neue, sans-serif</option>
+        <option value="Lato%20Extended,Lato,Helvetica%20Neue,Helvetica,Arial,sans-serif">Lato, sans-serif</option>
+        <option value="Open%20Sans,sans-serif">Open Sans, sans-serif</option>
+        <option value="Tahoma,sans-serif">Tahoma, sans-serif</option>
+        <option value="Verdana,sans-serif">Verdana, sans-serif</option>
+        <option value="Georgia,serif">Georgia, serif</option>
+        <option value="Times%20New%20Roman,serif">Times New Roman, serif</option>
+        <option value="Courier,monospace">Courier, monospace</option>
+      </select>
+  </div>
+
+  <div class='stackedlabeldropdown'>
+      <label for="select2">Font size:</label>
+      <select class="docsifythisurlbuilderoptionsline" id="fontsize" name="fontsize">
+        <option value="1.125">18px (1.125rem)</option>
+        <option disabled="disabled">----</option>
+        <option value=".875">14px (.875rem)</option>
+        <option value="1">16px (1rem)</option>
+        <option value="1.25">20px (1.25rem)</option>
+      </select>
+  </div>
+          
+  <div class='stackedlabeldropdown'>
+      <label for="select3">Line height:</label>
+      <select class="docsifythisurlbuilderoptionsline" id="lineheight" name="lineheight" style="width: 60px;">
+      <option value="1.4">1.4</option>
+      <option disabled="disabled">----</option>
+      <option value="1.2">1.2</option>
+      <option value="1.3">1.3</option>
+      <option value="1.5">1.5</option>
+      <option value="1.6">1.6</option>
+    </select>
+  </div>
+
+</div>
+
+<div class="docsifythisurlbuilderoptionsline"><label type="color">Page link color:</label><br># <input type="text" maxlength="6" size="6" value="0374B5" id="linkcolor" style="text-transform:uppercase" oninput="validateColorAndUpdatePreview()"/><span id="linkcolorpreview"></span></div>
+
+<div class="docsifythisurlbuilderoptionsline"><label>Text of 'Edit this Page' link:</label><br><input type="text" maxlength="60" value="Edit this Page" id="editLinkText" name="editLinkText"></div>
+
+<div class="docsifythisurlbuilderoptionsline"><input class="docsifythisurlbuildercheckbox" type="checkbox" id="editLinkTopCheck" unchecked><label for="editLinkTopCheck">Set location of the 'Edit this Page' link to top of page</label></div>
+
+<div class="docsifythisurlbuilderoptionsline"><input class="docsifythisurlbuildercheckbox" type="checkbox" id="hideCredits" unchecked><label for="hideCredits">Remove the Docsify-This credit text from bottom of page</label></div>
+
+<hr>
+
+<div class="docsifythisurlbuilderoptionsline"><label for="tocheadings">Headings to include in Table of Contents (at least one required):</label></div>
+<div class="docsifythisurlbuilderoptionsindentedline"><input class="docsifythisurlbuildercheckbox" type="checkbox" id="toch1"  unchecked><label for="toch1">Heading 1 (h1)</label></div>
+<div class="docsifythisurlbuilderoptionsindentedline"><input class="docsifythisurlbuildercheckbox" type="checkbox" id="toch2" checked><label for="toch2">Heading 2 (h2)</label></div>
+<div class="docsifythisurlbuilderoptionsindentedline"><input class="docsifythisurlbuildercheckbox" type="checkbox" id="toch3" unchecked><label for="toch3">Heading 3 (h3)</label></div>
+
+<div class="docsifythisurlbuilderoptionsline"><input class="docsifythisurlbuildercheckbox" type="checkbox" id="narrowToC" unchecked><label for="narrowToC">Use a narrower Table of Contents area, along with a smaller screen breakpoint</label></div>
+
+<hr>
+
+<div class="docsifythisurlbuilderoptionsline"><label>Maximum Header level (1-6) of Docsify sidebar:</label><br><input type="number" size="1" value="2" min="1" max="6" id="maxLevel" name="maxLevel"></div>
+
+<hr>
+
+<div class="docsifythisurlbuilderoptionsline"><input class="docsifythisurlbuildercheckbox" type="checkbox" id="hypothesis" unchecked><label for="hypothesis">Enable page annotation with Hypothes.is, an open source web annotation tool</label></div>
+
+<input class="docsifythisurlbuilderprimarybutton" style="border:none;margin-top: 10px;" type="button" id="btn_1" value="View as Standalone Web Page" onclick="openURLs(document.getElementById('docsifythisurlfield').value)"/>
+
+<div id="docsifythisurlbuilderrestoredefaultsbutton"><input style="color: #323232;" type="button" id="btn_4" value="Reset to Defaults" onclick="restoreAllDefaults()"/></div>
+
+</div>
+
+</div>
 
 ## All About Docsify-This
 
-* [What Problem Does Docsify-This Solve?](#what-problem-does-docsify-this-solve)
-* [How Docsify-This Works](#how-docsify-this-works)
-* [Example Workflow using GitHub Markdown Files](#example-usage-scenarios)
-* [Ready-to-Use Docsify-This Markdown Templates](#ready-to-use-docsify-this-markdown-templates)
-* [More Docsify-This Markdown Examples](#more-docsify-this-markdown-examples)
-* [Page Appearance URL Parameters](#page-appearance-url-parameters)
-* [Embedding Docsify-This Pages into Other Platforms](#embedding-docsify-this-pages-into-other-platforms)
-* [Supported Markdown CSS Classes](#supported-markdown-css-classes)
-* [Tips and Techniques](#tips-and-techniques)
-* [Improving Markdown Previews in Text Editors](#improving-markdown-previews-in-text-editors)
-* [Looking for Even More Customization and Control?](#looking-for-even-more-customization-and-control)
-* [Troubleshooting](#troubleshooting)
-* [Privacy Policy Summary](#privacy-policy-summary)
-* [Support this Project](#support-this-project)
+* [What Problem Does Docsify-This Solve?](/?id=what-problem-does-docsify-this-solve)
+* [How Docsify-This Works](/?id=how-docsify-this-works)
+* [Example Content Workflows](/?id=example-possible-workflows)
+* [Ready-to-Use Docsify-This Markdown Templates](/?id=ready-to-use-docsify-this-markdown-templates)
+* [More Docsify-This Markdown Examples](/?id=more-docsify-this-markdown-examples)
+* [Page Appearance URL Parameters](/?id=page-appearance-url-parameters)
+* [Embedding Docsify-This Pages into Other Platforms](/?id=embedding-docsify-this-pages-into-other-platforms)
+* [Supported Markdown CSS Classes](/?id=supported-markdown-css-classes)
+* [Tips and Techniques](/?id=tips-and-techniques)
+* [Improving Markdown Previews in Text Editors](/?id=improving-markdown-previews-in-text-editors)
+* [Looking for Even More Customization and Control?](/?id=looking-for-even-more-customization-and-control)
+* [Troubleshooting](/?id=troubleshooting)
+* [Privacy Policy Summary](/?id=privacy-policy-summary)
+* [Support this Project](/?id=support-this-project)
 
 ---
 
@@ -47,16 +169,16 @@ With Docsify-This you can:
 
 ### How Docsify-This Works
 
-Docsify-This is a customized [Docsify Open Publishing Starter Kit](https://github.com/hibbitts-design/docsify-open-publishing-starter-kit) site configured to render remote Markdown files via URL parameters in the following format:
+Docsify-This is a customized [Docsify Open Publishing Starter Kit](https://github.com/hibbitts-design/docsify-open-publishing-starter-kit) site configured to render remote Markdown files via URL parameters in the following format (automatically created by the above Web Page Builder):
 
-`https://docsify-this.net?basePath=URLpath&homepage=filename.md`
+<p style="word-wrap: break-word; margin-top: 1rem; padding: 6px; background-color: #666666; color: #F1F1F1; font-weight:normal; font-size: x-large; border-radius: 3px;">https://docsify-this.net?basePath=<span style="font-weight:bold">URLpath<span style="font-weight:normal">&homepage=<span style="font-weight:bold">filename.md</p>
 
 The **basePath** Docsify parameter is the URL path containing the raw source Markdown file to render. If the file is named the expected default **README.md** then no other parameter are required, otherwise the **homepage** Docsify parameter must also be included set to the name of the file to render. An example Docsify-This URL would be:
 https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-article/main&homepage=home.md  
 
 To render a file stored in a public GitHub repository you need to use the raw source URL of that file (i.e. raw.githubusercontent.com) - tap the **Raw** button when [viewing a file](https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file) to get this URL when not using the above Web Page Builder, which does this automatically. It is also possible to render a file stored in a private GitHub repository by activating GitHub Pages within that repository and then using the GitHub Pages URL of that file (i.e. username.github.io).  
 
-The appearance of rendered Markdown files can be customized by optional [URL parameters](#page-appearance-url-parameters) and a small set of available [CSS Classes](#supported-markdown-css-classes) within source Markdown files. In addition to supporting standard Markdown, [Embed.ly](https://embed.ly/code), [H5P](https://h5p.org/), [Katex](https://github.com/upupming/docsify-katex), and [Mermaid Diagrams](https://github.com/Leward/mermaid-docsify) are included. Optionally, page annotation with [Hypothes.is](https://hypothes.is) can be enabled.
+The appearance of rendered Markdown files can be customized by optional [URL parameters](/?id=page-appearance-url-parameters) and a small set of available [CSS Classes](/?id=supported-markdown-css-classes) within source Markdown files. In addition to supporting standard Markdown, [Embed.ly](https://embed.ly/code), [H5P](https://h5p.org/), [Katex](https://github.com/upupming/docsify-katex), and [Mermaid Diagrams](https://github.com/Leward/mermaid-docsify) are included. Optionally, page annotation with [Hypothes.is](https://hypothes.is) can be enabled.  
 
 Looking for an overall introduction to publishing with Docsify-This? Check out [Markdown Publishing with Docsify-This](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/markdown-publishing-with-docsify-this/main&sidebar=true&edit-link=https://github.com/hibbitts-design/markdown-publishing-with-docsify-this/blob/main/README.md&maxLevel=4&title=Markdown%20Publishing%20with%20Docsify-This).
 
@@ -67,13 +189,13 @@ Looking for an overall introduction to publishing with Docsify-This? Check out [
 <div class="row">
 <div class="column">
 
-![Docsify-This.net open and collaborative workflow using GitHub Markdown files](docs/images/docsify-this-gitHub.png ':class=image-border-rounded')  
+![Docsify-This.net open and collaborative workflow using GitHub Markdown files](images/docsify-this-gitHub.png ':class=image-border-rounded')  
 _Docsify-This.net open and collaborative workflow using GitHub Markdown files._
 
 </div>
 <div class="column">
 
-![Docsify-This.net workflow using Webserver Markdown files](docs/images/docsify-this-webserver.png ':class=image-border-rounded')
+![Docsify-This.net workflow using Webserver Markdown files](images/docsify-this-webserver.png ':class=image-border-rounded')
 _Docsify-This.net workflow using Webserver Markdown files._
 
 </div>
@@ -85,27 +207,59 @@ _Docsify-This.net workflow using Webserver Markdown files._
 
 While all you need to get going with Docsify-This is a basic Markdown file, here are some templates (with step-by-step how to use instructions) you can use that show what is possible with Markdown, images, and even a few HTML snippets!
 
+<div class="row">
+
+<div class="docsifythiscolumn35" >
+
+![Docsify-This One Page Course Template](images/docsify-this-one-page-course.png ':class=docsify-this-screenshot')
+
+</div>
+
+<div class="docsifythiscolumn65" >
+
 #### [Docsify-This One Page Course Template](https://github.com/hibbitts-design/docsify-this-one-page-course)
 
-![Docsify-This One Page Course Template](docs/images/docsify-this-one-page-course-readme.png)
+One Page Course [home.md](https://github.com/hibbitts-design/docsify-this-one-page-course/blob/main/home.md) file displayed by Docsify-This as a:   
+* [Standalone Page](https://docsify-this.net?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-course/main&homepage=home.md "Single Page Docsify Open Course Starter Kit - Standalone Page")  
+* [Standalone Page with Table of Contents and an 'Edit this Page' link](https://docsify-this.net?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-course/main&homepage=home.md&toc=true&edit-link=https://github.com/hibbitts-design/docsify-this-one-page-course/blob/main/home.md "Single Page Docsify Open Course Starter Kit - Standalone Page with Table of Contents")  
+* [Standalone Page with Docsify Sidebar and an 'Edit this Page' link](https://docsify-this.net?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-course/main&homepage=home.md&sidebar=true&edit-link=https://github.com/hibbitts-design/docsify-this-one-page-course/blob/main/home.md "Single Page Docsify Open Course Starter Kit - Standalone Page with Docsify Sidebar")
 
-One Page Course [home.md](https://github.com/hibbitts-design/docsify-this-one-page-course/blob/main/home.md) file displayed by Docsify-This as a:
-* [Standalone Page](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-course/main&homepage=home.md "Single Page Docsify Open Course Starter Kit - Standalone Page")  
-* [Standalone Page with Table of Contents and an 'Edit this Page' link](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-course/main&homepage=home.md&toc=true&edit-link=https://github.com/hibbitts-design/docsify-this-one-page-course/blob/main/home.md "Single Page Docsify Open Course Starter Kit - Standalone Page with Table of Contents")  
-* [Standalone Page with Docsify Sidebar and an 'Edit this Page' link](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-course/main&homepage=home.md&sidebar=true&edit-link=https://github.com/hibbitts-design/docsify-this-one-page-course/blob/main/home.md "Single Page Docsify Open Course Starter Kit - Standalone Page with Docsify Sidebar")
+</div>
 
-#### [Docsify-This One Page Article Template](https://github.com/hibbitts-design/docsify-this-one-page-article)  
+</div>
 
-![Docsify-This One Page Article Template](docs/images/docsify-this-one-page-article-readme.png)
+<div class="row">
 
-One Page Article [home.md](https://github.com/hibbitts-design/docsify-this-one-page-article/blob/main/home.md) file displayed by Docsify-This as a:    
-* [Standalone Page](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-article/main&homepage=home.md "Single Page Docsify Open Course Starter Kit - Standalone Page")  
-* [Standalone Page with Table of Contents including h2 and h3 Headers and an 'Edit this Page' link](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-article/main&homepage=home.md&toc=true&toc-headings=h2,h3&edit-link=https://github.com/hibbitts-design/docsify-this-one-page-article/blob/main/home.md "Single Page Docsify Open Course Starter Kit - Standalone Page with Table of Contents")  
-* [Standalone Page with Docsify Sidebar with maxLevel of 3 (H3) and an 'Edit this Page' link](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-article/main&homepage=home.md&sidebar=true&maxLevel=3&edit-link=https://github.com/hibbitts-design/docsify-this-one-page-article/blob/main/home.md "Single Page Docsify Open Course Starter Kit - Standalone Page with Docsify Sidebar")
+<div class="docsifythiscolumn35" >
+
+![Docsify-This One Page Article Template](images/docsify-this-one-page-article.png ':class=docsify-this-screenshot')
+
+</div>
+
+<div class="docsifythiscolumn65" >
+
+#### [Docsify-This One Page Article Template](https://github.com/hibbitts-design/docsify-this-one-page-article)
+
+One Page Article [home.md](https://github.com/hibbitts-design/docsify-this-one-page-article/blob/main/home.md) file displayed by Docsify-This as a:  
+* [Standalone Page](https://docsify-this.net?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-article/main&homepage=home.md "Single Page Docsify Open Course Starter Kit - Standalone Page")  
+* [Standalone Page with Table of Contents including h2 and h3 Headers and an 'Edit this Page' link](https://docsify-this.net?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-article/main&homepage=home.md&toc=true&toc-headings=h2,h3&edit-link=https://github.com/hibbitts-design/docsify-this-one-page-article/blob/main/home.md "Single Page Docsify Open Course Starter Kit - Standalone Page with Table of Contents")  
+* [Standalone Page with Docsify Sidebar with maxLevel of 3 (H3) and an 'Edit this Page' link](https://docsify-this.net?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-article/main&homepage=home.md&sidebar=true&maxLevel=3&edit-link=https://github.com/hibbitts-design/docsify-this-one-page-article/blob/main/home.md "Single Page Docsify Open Course Starter Kit - Standalone Page with Docsify Sidebar")
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="docsifythiscolumn35" >
+
+![Docsify-This LMS Content Pages Template](images/docsify-this-lms-content-pages.png ':class=docsify-this-screenshot')
+
+</div>
+
+<div class="docsifythiscolumn65" >
 
 #### [Docsify-This LMS Content Pages Template](https://github.com/hibbitts-design/docsify-this-lms-content-pages)
-
-![Docsify-This LMS Content Pages Template](docs/images/docsify-this-lms-content-pages-readme.png)
 
 Example pages, including the use of the `font-family`, `font-size` and `hide-credits` URL parameters for seamless content embedding within the Canvas LMS, as displayed by Docsify-This:  
 * [Embeddable Home Page](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-lms-content-pages/main&homepage=home.md&font-family=Lato%20Extended,%20Lato,Helvetica%20Neue,%20Helvetica,%20Arial,%20sans-serif&amp;font-size=1&amp;hide-credits=true "Embeddable Home Page")
@@ -116,15 +270,30 @@ Example pages, including the use of the `font-family`, `font-size` and `hide-cre
 * [Embeddable UX Techniques Guide Page (using Accordion format)](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-lms-content-pages/main&homepage=ux-techniques-guide.md&font-family=Lato%20Extended,%20Lato,Helvetica%20Neue,%20Helvetica,%20Arial,%20sans-serif&amp;font-size=1&amp;hide-credits=true "Embeddable UX Techniques Guide Page (using Accordion format)")
 * [Embeddable Contact Page](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-lms-content-pages/main&homepage=contact.md&font-family=Lato%20Extended,%20Lato,Helvetica%20Neue,%20Helvetica,%20Arial,%20sans-serif&amp;font-size=1&amp;hide-credits=true "Embeddable Contact Page")
 
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="docsifythiscolumn35" >
+
+![Docsify-This Multiple Page Site](images/docsify-this-multiple-page-site.png ':class=docsify-this-screenshot')
+
+</div>
+
+<div class="docsifythiscolumn65" >
+
 #### [Docsify-This Multiple Page Site Template](https://github.com/hibbitts-design/docsify-this-multiple-page-site)
 
-![Docsify-This Multiple Page Site](docs/images/docsify-this-multiple-page-site-readme.png)
-
 Multiple Page Site [home.md](https://github.com/hibbitts-design/docsify-this-multiple-page-site/blob/main/home.md) file, including the use of the Markdown CSS class `header-image-full-width`, displayed by Docsify-This as:  
-* [Standalone Pages](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-multiple-page-site/main&homepage=home.md "Docsify-This Multiple Page Site - Standalone Pages")  
-* [Standalone Pages and 'Edit this Page' links](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-multiple-page-site/main&homepage=home.md&edit-link=https://github.com/hibbitts-design/docsify-this-multiple-page-site/blob/main/home.md "Docsify-This Multiple Page Site - Standalone Pages and 'Edit this Page' links")  
-* [Standalone Pages with Docsify Navbar](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-multiple-page-site/main&homepage=home.md&loadNavbar=_navbar "Docsify-This Multiple Page Site - Standalone Pages with Docsify Navbar")  
-* [Standalone Pages with Docsify Navbar and 'GitHub Repository' link](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-multiple-page-site/main&homepage=home.md&loadNavbar=_navbar&edit-link=https://github.com/hibbitts-design/docsify-this-multiple-page-site&edit-link-text=GitHub%20Repository "Docsify-This Multiple Page Site - Standalone Pages with Docsify Navbar and 'GitHub Repository' link")  
+* [Standalone Pages and 'Edit this Page' links](https://docsify-this.net?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-multiple-page-site/main&homepage=home.md&edit-link=https://github.com/hibbitts-design/docsify-this-multiple-page-site/blob/main/home.md "Docsify-This Multiple Page Site - Standalone Pages")  
+* [Standalone Pages with Docsify Navbar](https://docsify-this.net?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-multiple-page-site/main&homepage=home.md&loadNavbar=_navbar "Docsify-This Multiple Page Site - Standalone Pages with Docsify Navbar and an 'Edit this Page' link")  
+* [Standalone Pages with Docsify Navbar and 'GitHub Repository' link](https://docsify-this.net?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-multiple-page-site/main&homepage=home.md&loadNavbar=_navbar&edit-link=https://github.com/hibbitts-design/docsify-this-multiple-page-site&edit-link-text=GitHub%20Repository "Docsify-This Multiple Page Site - Standalone Pages with Docsify Navbar and an 'GitHub Repository' link")  
+
+</div>
+
+</div>
 
 ---
 
@@ -214,7 +383,7 @@ https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-de
 
 #### Additional URL Parameters
 
-The following URL parameters are available but not ot included in the Web Page Builder.
+The following URL parameters are available but not included in the Web Page Builder.
 
 **dark-mode**  
 Automatically switch light/dark theme based on system OS-level preference, for example:  
@@ -471,3 +640,5 @@ This [open source project](https://github.com/hibbitts-design/docsify-this) is b
 **🙇🏻‍♂️Special Thanks**  
 [Beau Shaw](https://github.com/DaddyWarbucks) for his [Remote Docsify](https://github.com/DaddyWarbucks/remote-docsify) example.  
 [Alan Levine](https://github.com/cogdog) for the inspiration of a consolidated ReadMe collection.
+
+</div>
